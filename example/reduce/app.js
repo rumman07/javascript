@@ -1,45 +1,21 @@
-console.log("Hello World!")
+const votes = ['y', 'y', 'n', 'y', 'n', 'y', 'n', 'y', 'n', 'n', 'n', 'y', 'y'];
 
-let day = 5
+// To tally the votes:
+// const results = votes.reduce((tally, val) => {
+//   if (tally[val]) {
+//     tally[val]++
+//   } else {
+//     tally[val] = 1;
+//   }
+//   return tally;
+// }, {})
 
-switch(day){
-    case 1:
-        console.log("Monday");
-        break;
-    case 2:
-        console.log("Tuesday");
-        break;
-    case 3:
-        console.log("Wednesday");
-        break;
-    case 4:
-        console.log("Thursday");
-        break;
-    case 5:
-        console.log("Friday");
-        break;
-    case 6:
-        console.log("Saturday");
-        break;
-    case 7:
-        console.log("Sunday");
-        break;
-}
-const obj1= {a: 1, b:2}
+// The shorter version:
+const results = votes.reduce((tally, val) => {
+  tally[val] = (tally[val] || 0) + 1;
+  return tally;
+}, {});
 
-const {a, b} = obj1
-
-console.log(a , b)
-
-// Reduce
-const votes = ['y','n','y','absent','y','y','n','n','n']
-
-const results = votes.reduce((vote, val) => {
-    vote[val] = (vote[val] || 0) + 1;
-    return vote
-}, {})
-
-// Book Object
 const books = [{
     title: 'Good Omens',
     authors: ['Terry Pratchett', 'Neil Gaiman'],
@@ -102,9 +78,9 @@ const books = [{
   }
 ]
 // To group books by rating: 
-const groupBooksByRatings = books.reduce((groupedBooks, book) => {
-    const key = Math.floor(book.rating);
-    if(!groupedBooks[key]) groupedBooks[key] = [];
-    groupedBooks[key].push(book);
-    return groupedBooks;
-},{})
+const groupedByRatings = books.reduce((groupedBooks, book) => {
+  const key = Math.floor(book.rating);
+  if (!groupedBooks[key]) groupedBooks[key] = [];
+  groupedBooks[key].push(book)
+  return groupedBooks;
+}, {})
