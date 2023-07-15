@@ -108,3 +108,12 @@ const groupBooksByRatings = books.reduce((groupedBooks, book) => {
     groupedBooks[key].push(book);
     return groupedBooks;
 },{})
+
+//Calculate the sum in a array
+const nums = [1,2,3]
+const result = nums.reduce((accumulator,cval)=>{
+  const var1 = []
+  console.log(accumulator. cval)
+  var1.push(accumulator + cval)
+  return var1
+}, 0) 
